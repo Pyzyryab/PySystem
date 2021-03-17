@@ -22,6 +22,7 @@ class Directories:
             2 : ['ls', '-la']
         }
         self.args = [command for command in action_switcher.get(self.action)]
+        print(f'self.args -> {self.args}')
         return self.args
 
     def show_info(self):

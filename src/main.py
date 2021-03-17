@@ -1,4 +1,4 @@
-from py_system import PySystem
+from system.py_system import PySystem
 
 from info.show_options import categories
 

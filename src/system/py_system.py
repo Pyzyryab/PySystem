@@ -1,5 +1,5 @@
-from system_info import SystemInfo
-from bash.directories import Directories
+from system.system_info import SystemInfo
+from linux.directories import Directories
 from info.zerodaycode import ZeroDayCode
 from info.show_options import categories
 
@@ -23,7 +23,7 @@ class PySystem:
             print(f'''      [{idx}] : {categories[idx]}''')
         return ''
 
-    def perform_action(self, category, action=2):
+    def perform_action(self, category, action=1):
         '''This methods works as a fake switch implementation (Python does not
         have switch statement) in order to choose a class (based on what action users wants to get INFO) 
         and asign it to an instance.
