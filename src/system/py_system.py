@@ -18,12 +18,12 @@ class PySystem:
         return f'\nHello. Welcome to \'{self.__str__()}\'. A command line tool for manage your GNU/Linux system.\n'
     
     def _choose_category_warning(self) -> str:
-        print('Choose one of the availiable categories:\n')
+        print('Message: Choose one of the availiable categories:\n')
         for idx, category in categories.items():
             print(f'''      [{idx}] : {categories[idx]}''')
         return ''
 
-    def perform_action(self, category, action=1):
+    def perform_action(self, category, action):
         '''This methods works as a fake switch implementation (Python does not
         have switch statement) in order to choose a class (based on what action users wants to get INFO) 
         and asign it to an instance.
