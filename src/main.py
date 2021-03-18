@@ -1,3 +1,5 @@
+import time
+
 from system.py_system import PySystem
 
 from info.show_options import categories
@@ -66,9 +68,11 @@ if __name__ == '__main__':
         if again == 'Y' or again == 'y':
             change_category = input('In this category, or want to go back and choose category again? Y/n: ')
             if change_category == 'Y' or change_category == 'y':
-                main(current_category, same_category=True)
+                print(f'Current category on CHANGE CAT == Y -> {current_category} ')
+                current_category, current_option = main(past_category=current_category, same_category=True)
             elif change_category == 'N' or change_category == 'n':
-                main(same_category=False)
+                print(f'Current category on CHANGE CAT == N -> {current_category} ')
+                current_category, current_option = main(same_category=False)
             else:
                 print('Please, select a valid option to continue')
 
