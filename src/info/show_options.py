@@ -7,6 +7,12 @@ categories = {
     5 : 'Networking',
 }
 
+# OS info options
+OS_info_options = {
+    1 : 'OS Base info',
+    2 : 'Architecture and linkage',
+}
+
 # Directory options
 directories_options = {
     1 : 'List files',
@@ -14,3 +20,4 @@ directories_options = {
     3 : 'List files with details (long version)',
     4 : 'List files and hidden files with details (long version)',
 }
+

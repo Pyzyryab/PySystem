@@ -4,7 +4,8 @@ from info.show_options import directories_options
 
 class Directories:
     
-    def __init__(self, action, path='$HOME', *args, **kwargs):
+    def __init__(self, action, path='', *args, **kwargs):
+        self.current_user_path = kwargs['current_user_path']
         self.action = action
         self.path = path
         self.args = []
@@ -21,6 +22,10 @@ class Directories:
         return ''
 
     def set_args(self) -> list:
+        '''Given the action parameter -> type(action) == int
+        returns a list where list[0] is the command and list[1:] are 
+        the flags and options
+        '''
         action_switcher = {
             1 : ['ls'],
             2 : ['ls', '-a'],
@@ -29,9 +34,12 @@ class Directories:
         }
 
         self.args = [command for command in action_switcher.get(self.action)]
+        
         if self.path != '':
             self.args.append(self.path)
-        print(f'self.args -> {self.args}')
+        else:
+            self.args.append(self.current_user_path)
+        
         return self.args
 
     def show_info(self):

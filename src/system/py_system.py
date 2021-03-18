@@ -1,15 +1,18 @@
 from system.system_info import SystemInfo
+
 from linux.directories import Directories
+from linux.os_details import OperatingSystemInfo
+
 from info.zerodaycode import ZeroDayCode
 from info.show_options import categories
 
 class PySystem:
 
-    current_OS = getattr(SystemInfo, 'current_OS')
+    current_OS = getattr(SystemInfo, 'OS')
+    current_user_path = getattr(SystemInfo, 'linux_user_home_directory')
 
     def __init__(self, *args, **kwargs):
         print(self._greet())
-        print(self._choose_category_warning())
 
     def __str__(self):
         return f'{ZeroDayCode.app_name}, version: {ZeroDayCode.PySystem_version}'
@@ -36,8 +39,10 @@ class PySystem:
         if PySystem.current_OS == 'Linux':
             linux_switcher = {
                 0 : self.__str__(),
-                # 1 : list_files(),
-                2 : Directories(action)
+                1 : OperatingSystemInfo(action),
+                2 : Directories(action, 
+                    current_user_path=PySystem.current_user_path),
+                # 3 : ''
             }
             selection = linux_switcher.get(category, lambda: 0)
             return selection.show_info()
