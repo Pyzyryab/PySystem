@@ -7,7 +7,6 @@ class SystemInfo:
     '''Base class to gathering info and "encapsulate it", and provide it to 
     any another class as a static way to access it.
     '''
-
     OS = platform.system()
     OS_release = platform.release()
     OS_version = platform.version()
@@ -50,7 +49,7 @@ class SystemInfo:
         '''
         py_version, py_impl, py_rev, py_build, py_build_date, py_compiler = SystemInfo._retrive_python_info(SystemInfo) #should pass cls reference on self parameter
 
-        checked_py_values = [x if x != '' else 'No info availiable' for x in SystemInfo._retrive_python_info(SystemInfo)]
+        checked_py_values = [value if value != '' else 'No info availiable' for value in SystemInfo._retrive_python_info(SystemInfo)]
         py_names = [
         'Python version', 'Python implementation', 'Python revision', 
         'Python build branch', 'Python build date', 'Python compiler'
