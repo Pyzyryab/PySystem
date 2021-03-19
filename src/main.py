@@ -14,6 +14,8 @@ if __name__ == '__main__':
     task = PySystem()
 
     def chose_category() -> int:
+        '''get the category to work with'''
+        
         valid_category = lambda x : x if x > 0 and x <= len(categories) else False
 
         while True:
@@ -31,8 +33,9 @@ if __name__ == '__main__':
         
         return category
 
-    # Block to get an action of the desired category
     def chose_option(category) -> int:
+        '''Get an action of the desired category'''
+
         if category == 1:
             options = OS_info_options
         elif category == 2:
@@ -56,6 +59,8 @@ if __name__ == '__main__':
         return option
 
     def choose_cls_info(category):
+        '''Shows the availiable options on a category'''
+
         if category == 1:
             OperatingSystemInfo.show_OS_info_options()
         elif category == 2:
@@ -63,7 +68,15 @@ if __name__ == '__main__':
 
         return category
     
+    # MAIN
     def main(past_category=0, same_category=False):
+        '''
+        Entry point of the program. Execute calls to perform the given actions
+        provided by the user. With the input parameters, we can handle the flow to
+        let the user choose next action. This runtime is controlled by the while loop 
+        at the botton of this main.py file.
+        '''
+
         if same_category:
             print('\n')
             choose_cls_info(past_category)
@@ -83,7 +96,8 @@ if __name__ == '__main__':
             task.perform_action(category, option)
             return (category, option)
         
-    #Initiate the program execution and save return values destructuring the returned tuple
+    #Initiate the program execution and save values destructuring the returned tuple
+    # Primary flow control works as a do - while loop.
     current_category, current_option = main()
     time.sleep(0.1)
 
