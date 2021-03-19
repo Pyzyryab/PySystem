@@ -11,6 +11,9 @@ categories = {
 OS_info_options = {
     1 : 'OS Base info',
     2 : 'Architecture and linkage',
+    3 : 'libc version',
+    4 : 'Python info',
+    5 : 'Java info',
 }
 
 # Directory options

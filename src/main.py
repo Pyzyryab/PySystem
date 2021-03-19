@@ -31,13 +31,19 @@ if __name__ == '__main__':
             except:
                 print('Select a valid option to continue')
         return option
+
+    def choose_cls_info(category):
+        if category == 1:
+            OperatingSystemInfo.show_OS_info_options()
+        elif category == 2:
+            Directories.show_directories_options()
+
+        return category
     
     def main(past_category=0, same_category=False):
         if same_category:
-            if past_category == 1:
-                OperatingSystemInfo.show_OS_info_options()
-            elif past_category == 2:
-                Directories.show_directories_options()
+            print('\n')
+            choose_cls_info(past_category)
             option = chose_option()
 
             task.perform_action(past_category, option)
@@ -48,12 +54,7 @@ if __name__ == '__main__':
             category = chose_category()
             print(f'\nYou selected -> {categories[category]}')
         
-        # Block to handle what category instanciate
-            if category == 1:
-                OperatingSystemInfo.show_OS_info_options()
-            elif category == 2:
-                Directories.show_directories_options()
-            
+            choose_cls_info(category)
             option = chose_option()
 
             task.perform_action(category, option)
@@ -61,18 +62,19 @@ if __name__ == '__main__':
         
     #Initiate the program execution and save return values destructuring the returned tuple
     current_category, current_option = main()
+    time.sleep(0.1)
 
     while True:
-        again = input('Do you want to perform another action? Y/n: ')
+        again = input('\nDo you want to perform another action? Y/n: ')
         
         if again == 'Y' or again == 'y':
-            change_category = input('In this category, or want to go back and choose category again? Y/n: ')
-            if change_category == 'Y' or change_category == 'y':
-                print(f'Current category on CHANGE CAT == Y -> {current_category} ')
+            change_category = input('In this category(Y), or choose category again(N)? Y/n: ')
+            if change_category == 'Y' or change_category == 'y':              
                 current_category, current_option = main(past_category=current_category, same_category=True)
+                time.sleep(0.1)
             elif change_category == 'N' or change_category == 'n':
-                print(f'Current category on CHANGE CAT == N -> {current_category} ')
                 current_category, current_option = main(same_category=False)
+                time.sleep(0.1)
             else:
                 print('Please, select a valid option to continue')
 
@@ -83,4 +85,3 @@ if __name__ == '__main__':
 
         
     
-
