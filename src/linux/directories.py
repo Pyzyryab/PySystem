@@ -27,13 +27,14 @@ class Directories:
         the flags and options
         '''
         action_switcher = {
+            0 : ['echo', 'PySystem is amazing!'],
             1 : ['ls'],
             2 : ['ls', '-a'],
             3 : ['ls', '-lth'], #long format, human readable
             4 : ['ls', '-lta'], #long format, hidden files
         }
 
-        self.args = [command for command in action_switcher.get(self.action)]
+        self.args = [command for command in action_switcher.get(self.action, action_switcher.get(0))]
         
         if self.path != '':
             self.args.append(self.path)

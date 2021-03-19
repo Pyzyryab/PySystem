@@ -52,4 +52,4 @@ class OperatingSystemInfo(SystemInfo):
         return SystemInfo.python_info()
 
     def get_java_info(self) -> str:
-        return ''
+        return SystemInfo.java_info()

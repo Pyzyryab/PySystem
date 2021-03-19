@@ -32,10 +32,11 @@ class PySystem:
         and asign it to an instance.
         Every class will have a method called 'SHOW INFO' and this will be dynamically
         selected with the fake switch.
-        This aproach saves memory and optimizes the OOP aproach, which is usually slow as opossite of the procedural
-        way. Fake switch (just a dict) is much faster than make several if/else checks, and just ONE
-        class is allocated on memory when an action is required.
+        This aproach allocates all clases on memory on the very first time, optimizing the OOP aproach, which is usually slow as opossite of the procedural
+        way. Fake switch (just a dict) is much faster than make several if/else checks, and now every time an action in required
+        everything is ready at-a-moment-call.
         '''
+
         if PySystem.current_OS == 'Linux':
             linux_switcher = {
                 0 : self.__str__(),
@@ -44,8 +45,8 @@ class PySystem:
                     current_user_path=PySystem.current_user_path),
                 # 3 : ''
             }
-            selection = linux_switcher.get(category, lambda: 0)
+            selection = linux_switcher.get(category, lambda action : 0 if len(linux_switcher) > action else action)
             return selection.show_info()
-            # return linux_switcher.get(category, lambda: 0), PySystem.current_OS
         
         # Future implementation on WINDOWS as windows_switcher
+
