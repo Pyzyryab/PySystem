@@ -3,6 +3,8 @@ import time
 from system.py_system import PySystem
 
 from info.show_options import categories
+from info.show_options import OS_info_options
+from info.show_options import directories_options
 
 from linux.directories import Directories
 from linux.os_details import OperatingSystemInfo
@@ -12,24 +14,45 @@ if __name__ == '__main__':
     task = PySystem()
 
     def chose_category() -> int:
+        valid_category = lambda x : x if x > 0 and x <= len(categories) else False
+
         while True:
             category = input('\n-> Enter a number to select a category: ')
             try:
                 category = int(category)
-                break
+
+                if not valid_category(category):
+                    print('-> Error: Number not allowed. ')
+                else:
+                    break
+
             except:
                 print('Select a valid option to continue')
+        
         return category
 
     # Block to get an action of the desired category
-    def chose_option() -> int:
+    def chose_option(category) -> int:
+        if category == 1:
+            options = OS_info_options
+        elif category == 2:
+            options = directories_options
+
+        valid_option = lambda x : x if x > 0 and x <= len(options) else False
+
         while True:
             option = input('\n-> Enter a number to select an option: ')
             try:
                 option = int(option)
-                break
+
+                if not valid_option(option):
+                    print('-> Error: Number not allowed. ')
+                else:
+                    break
+
             except:
                 print('Select a valid option to continue')
+        
         return option
 
     def choose_cls_info(category):
@@ -44,7 +67,7 @@ if __name__ == '__main__':
         if same_category:
             print('\n')
             choose_cls_info(past_category)
-            option = chose_option()
+            option = chose_option(past_category)
 
             task.perform_action(past_category, option)
             return (past_category, option)
@@ -55,7 +78,7 @@ if __name__ == '__main__':
             print(f'\nYou selected -> {categories[category]}')
         
             choose_cls_info(category)
-            option = chose_option()
+            option = chose_option(category)
 
             task.perform_action(category, option)
             return (category, option)

@@ -42,8 +42,7 @@ class SystemInfo:
             )
     
     @classmethod
-    def python_info(cls):
-        
+    def python_info(cls):  
         '''
         Formatted version of retrieved data with _retrieve_python_info
         '''
@@ -57,7 +56,7 @@ class SystemInfo:
 
         if not SystemInfo.python_detected:
             print(f'''
-            No Python instalation founded on your operating system
+            No Python instalation detected on your operating system
             ''')
         else:
             for idx, element in enumerate(py_names):
