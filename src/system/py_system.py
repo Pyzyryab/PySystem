@@ -9,7 +9,10 @@ from info.show_options import categories
 class PySystem:
 
     current_OS = getattr(SystemInfo, 'OS')
-    current_user_path = getattr(SystemInfo, 'linux_user_home_directory')
+    current_user_path = getattr(SystemInfo, 'user_home_directory')
+
+    class InvalidCategory:
+        pass
 
     def __init__(self, *args, **kwargs):
         print(self._greet())
@@ -47,6 +50,15 @@ class PySystem:
             }
             selection = linux_switcher.get(category, lambda action : 0 if len(linux_switcher) > action else action)
             return selection.show_info()
-        
-        # Future implementation on WINDOWS as windows_switcher
+
+        elif PySystem.current_OS == 'Windows':
+            windows_switcher = {
+                0 : self.__str__(),
+                1 : OperatingSystemInfo(action),
+                2 : Directories(action, 
+                    current_user_path=PySystem.current_user_path),
+                # 3 : ''
+            }
+            selection = windows_switcher.get(category, lambda action : 0 if len(windows_switcher) > action else action)
+            return selection.show_info()
 

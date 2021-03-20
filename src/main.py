@@ -28,7 +28,7 @@ if __name__ == '__main__':
                 else:
                     break
 
-            except:
+            except PySystem.InvalidCategory:
                 print('Select a valid option to continue')
         
         return category

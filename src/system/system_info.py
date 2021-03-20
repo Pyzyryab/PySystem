@@ -17,8 +17,11 @@ class SystemInfo:
     libc_type = platform.libc_ver()[0]
     libc_version = platform.libc_ver()[1]
 
-    # Request user linux home path
-    linux_user_home_directory = expanduser("~")
+    # Request user home path
+    user_home_directory = expanduser("~")
+    if OS == 'Windows':
+        user_home_directory += user_home_directory + '\\Desktop'
+    
 
     # Python details
     python_detected = False
