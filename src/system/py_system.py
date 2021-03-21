@@ -12,6 +12,7 @@ class PySystem:
     current_user_path = getattr(SystemInfo, 'user_home_directory')
 
     class InvalidCategory:
+        '''Base exception for invalid user input on prompt'''
         pass
 
     def __init__(self, *args, **kwargs):

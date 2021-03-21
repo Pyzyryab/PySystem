@@ -13,14 +13,19 @@ class SystemInfo:
     OS_architecture = platform.architecture()[0]
     OS_arch_linkage = platform.architecture()[1]
 
+    
+
     # libc type and version
     libc_type = platform.libc_ver()[0]
     libc_version = platform.libc_ver()[1]
 
-    # Request user home path
+    # User details
+
+        # Request user home path
     user_home_directory = expanduser("~")
+    user_desktop_directory = expanduser("~")
     if OS == 'Windows':
-        user_home_directory += user_home_directory + '\\Desktop'
+        user_desktop_directory += '\\Desktop'
     
 
     # Python details
