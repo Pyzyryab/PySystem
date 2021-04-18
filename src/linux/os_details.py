@@ -42,10 +42,16 @@ class OperatingSystemInfo(SystemInfo):
         return ''
 
     def get_libc_version(self) -> str:
-        print(f'''
-        libc: {super().libc_type}
-        Version: {super().libc_version}
-        ''')
+        libc_type = super().libc_type
+        libc_version = super().libc_version
+        
+        if not libc_version:
+            print ('\tNo libc detected in this system.')
+        else:
+            print(f'''
+            libc: {libc_type}
+            Version: {libc_version}
+            ''')
         return ''
     
     def get_python_info(self) -> str:
