@@ -4,7 +4,7 @@ import subprocess
 from os.path import expanduser
 
 class SystemInfo:
-    '''Base class to gathering info and "encapsulate it", and provide it to 
+    '''Base class to gathering info and "encapsulate it", in order to provide it to 
     any another class as a static way to access it.
     '''
     OS = platform.system()
@@ -13,15 +13,13 @@ class SystemInfo:
     OS_architecture = platform.architecture()[0]
     OS_arch_linkage = platform.architecture()[1]
 
-    
-
     # libc type and version
     libc_type = platform.libc_ver()[0]
     libc_version = platform.libc_ver()[1]
 
     # User details
 
-        # Request user home path
+    # Request user home path
     user_home_directory = expanduser("~")
     user_desktop_directory = expanduser("~")
     if OS == 'Windows':

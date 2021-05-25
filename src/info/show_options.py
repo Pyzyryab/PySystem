@@ -24,3 +24,7 @@ directories_options = {
     4 : 'List files and hidden files with details (long version)',
 }
 
+# Processes options
+processes_options = { 
+    1 : 'Show processes details',
+}

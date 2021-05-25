@@ -5,9 +5,13 @@ from system.py_system import PySystem
 from info.show_options import categories
 from info.show_options import OS_info_options
 from info.show_options import directories_options
+from info.show_options import processes_options
+
+from linux.os_details import OperatingSystemInfo
 
 from linux.directories import Directories
-from linux.os_details import OperatingSystemInfo
+from linux.processes import Processes
+
 
 if __name__ == '__main__':
 
@@ -40,6 +44,8 @@ if __name__ == '__main__':
             options = OS_info_options
         elif category == 2:
             options = directories_options
+        elif category == 3:
+            options = processes_options
 
         valid_option = lambda x : x if x > 0 and x <= len(options) else False
 
@@ -60,12 +66,12 @@ if __name__ == '__main__':
 
     def choose_cls_info(category):
         '''Shows the availiable options on a category'''
-
         if category == 1:
             OperatingSystemInfo.show_OS_info_options()
         elif category == 2:
             Directories.show_directories_options()
-
+        elif category == 3:
+            Processes.show_processes_availiable_options()
         return category
     
     # MAIN

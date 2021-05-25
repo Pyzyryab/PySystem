@@ -2,6 +2,7 @@ from system.system_info import SystemInfo
 
 from linux.directories import Directories
 from linux.os_details import OperatingSystemInfo
+from linux.processes import Processes
 
 from info.zerodaycode import ZeroDayCode
 from info.show_options import categories
@@ -47,7 +48,7 @@ class PySystem:
                 1 : OperatingSystemInfo(action),
                 2 : Directories(action, 
                     current_user_path=PySystem.current_user_path),
-                # 3 : ''
+                3 : Processes().info(),
             }
             selection = linux_switcher.get(category, lambda action : 0 if len(linux_switcher) > action else action)
             return selection.show_info()
