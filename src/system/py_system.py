@@ -48,9 +48,10 @@ class PySystem:
                 1 : OperatingSystemInfo(action),
                 2 : Directories(action, 
                     current_user_path=PySystem.current_user_path),
-                3 : Processes().info(),
+                3 : Processes(),
             }
-            selection = linux_switcher.get(category, lambda action : 0 if len(linux_switcher) > action else action)
+            selection = linux_switcher.get(category, 0)
+            print(f'Selection is: {selection}, category is: {category}, action is: {action}, len linx sw is: {len(linux_switcher)}')
             return selection.show_info()
 
         elif PySystem.current_OS == 'Windows':

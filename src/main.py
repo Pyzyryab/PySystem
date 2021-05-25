@@ -108,7 +108,10 @@ if __name__ == '__main__':
     time.sleep(0.1)
 
     while True:
-        again = input('\nDo you want to perform another action? Y/n: ')
+        if current_category == 3:
+            break
+        else:
+            again = input('\nDo you want to perform another action? Y/n: ')
         
         if again == 'Y' or again == 'y':
             change_category = input('In this category(Y), or choose category again(N)? Y/n: ')
